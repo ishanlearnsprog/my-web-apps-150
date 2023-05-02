@@ -36,10 +36,10 @@ function App() {
 
     return (
         <>
-            <header className="shadow">
+            <header className="shadow shadow-indigo-900 mb-5">
                 <Header></Header>
             </header>
-            <main>
+            <main className="flex flex-col justify-center items-center">
                 <Form notes={notes} currentId={currentId} setCurrentId={setCurrentId} createNote={createNote} updateNote={updateNote}></Form>
                 <Notes allNotes={notes} deleteNote={deleteNote} setCurrentId={setCurrentId}></Notes>
             </main>

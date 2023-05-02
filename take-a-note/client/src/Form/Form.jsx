@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { getNote } from "../api";
 
 const Form = ({ notes, currentId, setCurrentId, createNote, updateNote }) => {
 
@@ -29,11 +28,11 @@ const Form = ({ notes, currentId, setCurrentId, createNote, updateNote }) => {
 
     return (
         <section>
-            <form onSubmit={handleSubmit} className="flex flex-col">
-                <input type="text" placeholder="Title" name="title" onChange={(e) => { setFormData({ ...formData, "title": e.target.value }) }} value={formData.title} />
-                <textarea name="text" placeholder="Make a Note" onChange={(e) => { setFormData({ ...formData, "text": e.target.value }) }} value={formData.text}></textarea>
-                <button type="submit">{currentId ? "Edit Note" : "Make Note"}</button>
-                <button onClick={(e) => clear(e)}>Clear</button>
+            <form onSubmit={handleSubmit} className="w-80 sm:w-[600px] flex flex-col">
+                <input className="bg-indigo-950 m-2.5" type="text" placeholder="Title" name="title" onChange={(e) => { setFormData({ ...formData, "title": e.target.value }) }} value={formData.title} />
+                <textarea className="h-60 scrollbar-none bg-indigo-950 m-2.5 resize-none" name="text" placeholder="Make a Note" onChange={(e) => { setFormData({ ...formData, "text": e.target.value }) }} value={formData.text}></textarea>
+                <button class="m-2.5 py-2.5 bg-indigo-950 hover:bg-indigo-900" type="submit">{currentId ? "Edit Note" : "Make Note"}</button>
+                <button class="m-2.5 py-2.5 bg-indigo-950 hover:bg-indigo-900" onClick={(e) => clear(e)}>Clear</button>
             </form>
         </section>
     )
