@@ -1,16 +1,25 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 
-import Auth from "./components/Auth/Auth";
-import Home from "./components/Home/Home";
+import { useUsersContext } from "./hooks/useUsersContext";
+
+import Notes from "./pages/Notes";
+import Auth from "./pages/Auth";
 
 const App = () => {
+    const { user } = useUsersContext();
+
+    const router = createBrowserRouter([
+        {
+            path: "/",
+            element: user ? <Notes></Notes> : <Navigate to="/auth"></Navigate>,
+        },
+        {
+            path: "/auth",
+            element: user ? <Navigate to="/"></Navigate> : <Auth></Auth>,
+        },
+    ])
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/auth" element={<Auth></Auth>}></Route>
-                <Route path="/notes" element={<Home></Home>}></Route>
-            </Routes>
-        </BrowserRouter>
+        <RouterProvider router={router}></RouterProvider>
     )
 }
 
