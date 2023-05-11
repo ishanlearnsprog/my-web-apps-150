@@ -1,25 +1,27 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
-import bodyParser from "body-parser";
-import cors from "cors";
 import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import cors from "cors"
 
-import notesRoutes from "./routes/notes.js";
-
-const PORT = process.env.PORT || 5000;
-const CONNECTION_URL = "mongodb://127.0.0.1:27017/take-a-note"
+import noteRoutes from "./routes/notes.js";
+import userRoutes from "./routes/users.js";
 
 const app = express();
 
 app.use(bodyParser.json({ extended: true }));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ extended: true }));
 app.use(cors());
 
-app.use("/", notesRoutes);
+app.use("/", noteRoutes);
+app.use("/", userRoutes);
 
-mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
-        app.listen(PORT, () => {
-            console.log(`Server running on PORT ${PORT}`);
+        app.listen(process.env.PORT, () => {
+            console.log(`Server running on Port ${process.env.PORT}`);
         })
     })
-    .catch((error) => { console.log(error); })
+    .catch((error) => console.log(error));
