@@ -47,7 +47,7 @@ export const NotesReducer = (state, action) => {
 
 export const NotesContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(NotesReducer, {
-        notes: null,
+        notes: [],
         noteId: 0,
     })
 

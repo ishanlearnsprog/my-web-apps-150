@@ -30,14 +30,13 @@ const NoteForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="flex flex-col my-10 w-[420px] md:w-[320px]">
+        <form onSubmit={handleSubmit}>
             <input
                 type="text"
                 name="title"
                 placeholder="Title"
                 value={formData.title}
-                onChange={(e) => (setFormData({ ...formData, title: e.target.value }))}
-                className="my-2.5 p-2.5 bg-indigo-900 text-neutral-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                onChange={(e) => (setFormData({ ...formData, title: e.target.value }))} />
 
 
             <textarea
@@ -45,11 +44,10 @@ const NoteForm = () => {
                 id="text"
                 placeholder={noteId ? "Edit Note" : "Make a Note"}
                 value={formData.text}
-                onChange={(e) => (setFormData({ ...formData, text: e.target.value }))}
-                className="my-2.5 p-2.5 bg-indigo-900 text-neutral-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 h-[250px] resize-none " ></textarea>
-            <div className="my-2.5 flex justify-between">
-                <button type="submit" className="p-2.5 w-1/2 bg-indigo-900 text-neutral-50">{noteId ? "Edit Note" : "Make Note"}</button>
-                <button type="reset" className="p-2.5 w-1/2 bg-indigo-900 text-neutral-50" onClick={() => { clear() }}>{noteId ? "Make Note" : "Clear"}</button>
+                onChange={(e) => (setFormData({ ...formData, text: e.target.value }))}></textarea>
+            <div>
+                <button type="submit">{noteId ? "Edit Note" : "Make Note"}</button>
+                <button type="reset" onClick={() => { clear() }}>{noteId ? "Make Note" : "Clear"}</button>
             </div>
         </form>
     )

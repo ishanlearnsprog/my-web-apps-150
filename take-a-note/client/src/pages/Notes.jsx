@@ -22,15 +22,15 @@ const Notes = () => {
 
     return (
         <>
-            <header className="absolute border-b border-indigo-900 w-full bg-indigo-950 text-neutral-50 font-mono">
+            <header>
                 <Navbar></Navbar>
             </header>
-            <main className="grid grid-cols-1 md:grid-cols-6 bg-indigo-950 h-screen">
-                <section className="md:col-span-2 md:h-full flex justify-center items-center">
+            <main>
+                <section>
                     <NoteForm></NoteForm>
                 </section>
-                <section className="md:col-span-4">
-                    {notes ? notes.map((note) => { return <Note key={note._id} note={note}></Note> }) : (<h2>No Notes</h2>)}
+                <section>
+                    {notes.length !== 0 ? notes.map((note) => { return <Note key={note._id} note={note}></Note> }) : <h2>There are no notes</h2>}
                 </section>
             </main>
         </>
