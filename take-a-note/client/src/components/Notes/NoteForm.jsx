@@ -21,10 +21,11 @@ const NoteForm = () => {
         e.preventDefault();
         if (noteId) {
             const res = await updateNote(noteId, formData);
-            dispatch({ type: "UPDATE_NOTE", payload: res.data });
+            dispatch({ type: "UPDATE_NOTE", payload: res?.data });
         } else {
+            if (formData.title === "" || formData.text === "") return;
             const res = await createNote(formData);
-            dispatch({ type: "CREATE_NOTE", payload: res.data });
+            dispatch({ type: "CREATE_NOTE", payload: res?.data });
         }
         clear();
     }
@@ -42,7 +43,7 @@ const NoteForm = () => {
             <textarea
                 name="text"
                 id="text"
-                placeholder={noteId ? "Edit Note" : "Make a Note"}
+                placeholder="Text"
                 value={formData.text}
                 onChange={(e) => (setFormData({ ...formData, text: e.target.value }))}></textarea>
             <div>
