@@ -9,10 +9,10 @@ const Navbar = () => {
     }
 
     return (
-        <>
-            <h1>Take-A-Note</h1>
-            <button onClick={handleLogout}>Logout</button>
-        </>
+        <div className="flex justify-between align-middle">
+            <h1 className="m-2.5 text-3xl">Take-A-Note</h1>
+            <button onClick={handleLogout} className="m-2.5 hover:underline">Logout</button>
+        </div>
 
     )
 }
