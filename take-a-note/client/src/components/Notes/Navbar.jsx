@@ -1,5 +1,6 @@
 import { useUsersContext } from "../../hooks/useUsersContext";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 const Navbar = () => {
     const { dispatch } = useUsersContext();
 
@@ -9,10 +10,10 @@ const Navbar = () => {
     }
 
     return (
-        <div className="flex justify-between align-middle">
-            <h1 className="m-2.5 text-3xl">Take-A-Note</h1>
-            <button onClick={handleLogout} className="m-2.5 hover:underline">Logout</button>
-        </div>
+        <>
+            <h1 className="logo">Take-A-Note</h1>
+            <button onClick={handleLogout} className="logout-btn"><FontAwesomeIcon icon={faArrowRightFromBracket} size={"lg"} /></button>
+        </>
 
     )
 }

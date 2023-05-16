@@ -31,7 +31,7 @@ const NoteForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="notes-form">
             <input
                 type="text"
                 name="title"

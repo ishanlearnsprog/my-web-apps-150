@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+    --background-color: hsl(255, 45%, 15%);
+    --background-color-noactive: hsl(255, 45%, 25%);
+    --background-color-active: hsl(255, 45%, 35%);
+    --text-color: #e1e1e1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+#root {
+    height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.auth-container {
+    max-width: 100vw;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-wrapper h1 {
+    font-size: 4rem;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.error-alert {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.auth-form {
+    width: 28rem;
+}
+
+.auth-form div {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-form label {
+    font-size: 2rem;
+    margin: 0.5rem 0;
+}
+
+input {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: var(--background-color-noactive);
+    color: var(--text-color);
+    font-size: 1.5rem;
+    padding: 1rem;
+    width: 100%;
+    display: block;
+    border: none;
+}
+
+input:focus {
+    outline: none;
+    background-color: var(--background-color-active);
+}
+
+.auth-form button {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 1.5rem;
+    width: 28rem;
+    display: block;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.auth-form button:hover {
+    text-decoration: underline;
+}
+
+.auth-form button {
+    background-color: var(--background-color-noactive);
+    margin: 3rem 0;
+    padding: 1rem 0;
+}
+
+.auth-form button:hover {
+    background-color: var(--background-color-active);
+    text-decoration: none;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    box-shadow: 0 0 3px 1px hsl(256, 45%, 25%);
+}
+
+.logo {
+    font-size: 2rem;
+    margin: 1rem;
+    flex: 1;
+}
+
+.logout-btn {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    outline: none;
+    border: none;
+    margin: 1rem;
+    cursor: pointer;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notes-form {
+    margin: 2rem 0;
+    width: 28rem;
+}
+
+textarea {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: var(--background-color-noactive);
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    width: 100%;
+    height: 20rem;
+    display: block;
+    border: none;
+    resize: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--background-color-noactive) var(--background-color-active);
+}
+
+
+textarea:focus {
+    outline: none;
+    background-color: var(--background-color-active);
+}
+
+.notes-form button {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.5rem;
+    background-color: var(--background-color-noactive);
+    color: var(--text-color);
+    margin: 1rem 0;
+    padding: 1rem 0;
+    width: 100%;
+    display: block;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.notes-form button:hover {
+    background-color: var(--background-color-active);
+}

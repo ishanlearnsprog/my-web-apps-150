@@ -26,7 +26,7 @@ const Notes = () => {
                 <Navbar></Navbar>
             </header>
             <main>
-                <section>
+                <section className="form-container">
                     <NoteForm></NoteForm>
                 </section>
                 <section>

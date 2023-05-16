@@ -14,6 +14,7 @@ const Auth = () => {
     const clear = () => {
         setFormData({ email: "", password: "" });
         setConfirmPassword("");
+        setError("");
     }
 
     const handleSubmit = async (e) => {
@@ -69,14 +70,20 @@ const Auth = () => {
     }
 
     return (
-        <main>
-            <section>
+        <main className="auth-container">
+            <section className="auth-wrapper">
                 <h1>Take-A-Note</h1>
-                {error && (<p>{error}</p>)}
-                <form onSubmit={handleSubmit} noValidate>
+                {error && (<p className="error-alert">{error}</p>)}
+                <form onSubmit={handleSubmit} noValidate className="auth-form">
                     <div>
                         <label htmlFor="email">Email</label>
-                        <input type="email" name="email" id="email" value={formData.email} onChange={(e) => (setFormData({ ...formData, email: e.target.value }))} />
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            value={formData.email}
+                            onChange={(e) => (setFormData({ ...formData, email: e.target.value }))}
+                        />
                     </div>
                     <div >
                         <label htmlFor="paswword">Password</label>
@@ -88,7 +95,7 @@ const Auth = () => {
                     </div>)}
                     <button type="submit">{isSignUp ? "Sign Up" : "Sign In"}</button>
                 </form>
-                <button onClick={() => { setIsSignUp(!isSignUp); setFormData({ email: "", password: "" }); }}>{isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}</button>
+                <button onClick={() => { setIsSignUp(!isSignUp); clear(); }}>{isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}</button>
             </section>
         </main>
     )
