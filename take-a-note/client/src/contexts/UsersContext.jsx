@@ -1,4 +1,5 @@
 import { createContext, useReducer, useEffect } from "react";
+import jwt_decode from "jwt-decode";
 
 import { LOGIN, LOGOUT } from "./types.jsx";
 
@@ -23,19 +24,26 @@ export const UsersReducer = (state, action) => {
 }
 
 export const UsersContextProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(UsersReducer, {
+    const [state, dispatchUser] = useReducer(UsersReducer, {
         user: null,
     })
 
     useEffect(() => {
         const user = localStorage.getItem("user");
         if (user) {
-            dispatch({ type: LOGIN, payload: user })
+            const { exp } = jwt_decode(JSON.parse(user).token);
+            let currentDate = new Date();
+            if (exp * 1000 <= currentDate.getTime()) {
+                localStorage.removeItem("user");
+
+            } else {
+                dispatchUser({ type: "LOGIN", payload: user });
+            }
         }
     }, [])
 
     return (
-        <UsersContext.Provider value={{ ...state, dispatch }}>
+        <UsersContext.Provider value={{ ...state, dispatchUser }}>
             {children}
         </UsersContext.Provider>
     )

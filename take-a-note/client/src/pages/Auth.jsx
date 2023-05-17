@@ -5,16 +5,30 @@ import { useUsersContext } from "../hooks/useUsersContext.jsx"
 import { signInUser, signUpUser } from "../api.jsx";
 
 const Auth = () => {
-    const { dispatch } = useUsersContext();
+    const { dispatchUser } = useUsersContext();
     const [formData, setFormData] = useState({ email: "", password: "" });
     const [isSignUp, setIsSignUp] = useState(false);
     const [error, setError] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    const clear = () => {
+    const clearSignUp = () => {
         setFormData({ email: "", password: "" });
         setConfirmPassword("");
         setError("");
+    }
+
+    const clearSignIn = () => {
+        setFormData({ email: "", password: "" });
+        setConfirmPassword("");
+    }
+
+    const switchMode = () => {
+        if (isSignUp) {
+            clearSignUp();
+        } else {
+            clearSignIn();
+        }
+        setIsSignUp(!isSignUp);
     }
 
     const handleSubmit = async (e) => {
@@ -49,7 +63,7 @@ const Auth = () => {
             res = await signUpUser({ ...formData })
                 .catch((error) => {
                     setError(error?.response?.data?.error);
-                    clear()
+                    clearSignUp();
                 });
 
         } else {
@@ -57,23 +71,23 @@ const Auth = () => {
             res = await signInUser({ ...formData })
                 .catch((error) => {
                     setError(error?.response?.data?.error);
-                    clear()
+                    clearSignIn();
                 });
 
         }
 
         if (res?.status === 200) {
             localStorage.setItem("user", JSON.stringify(res.data));
-            dispatch({ type: "LOGIN", payload: JSON.stringify(res.data) });
+            dispatchUser({ type: "LOGIN", payload: JSON.stringify(res.data) });
         }
 
     }
 
     return (
-        <main className="auth-container">
-            <section className="auth-wrapper">
+        <main>
+            <section>
                 <h1>Take-A-Note</h1>
-                {error && (<p className="error-alert">{error}</p>)}
+                {error && (<p>{error}</p>)}
                 <form onSubmit={handleSubmit} noValidate className="auth-form">
                     <div>
                         <label htmlFor="email">Email</label>
@@ -95,7 +109,7 @@ const Auth = () => {
                     </div>)}
                     <button type="submit">{isSignUp ? "Sign Up" : "Sign In"}</button>
                 </form>
-                <button onClick={() => { setIsSignUp(!isSignUp); clear(); }}>{isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}</button>
+                <button onClick={() => switchMode()}>{isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}</button>
             </section>
         </main>
     )

@@ -16,8 +16,8 @@ const Note = ({ note }) => {
     }
 
     return (
-        <div>
-            <h2>{note.title}</h2>
+        <div className="note">
+            <h1>{note.title}</h1>
             {note.text ? (<p>{note.text}</p>) : (<p>{"Empty Note"}</p>)}
             <button onClick={handleEdit}>Edit</button>
             <button onClick={handleClick}>Delete</button>

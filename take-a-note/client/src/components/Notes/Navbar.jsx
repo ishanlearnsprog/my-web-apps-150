@@ -2,11 +2,11 @@ import { useUsersContext } from "../../hooks/useUsersContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 const Navbar = () => {
-    const { dispatch } = useUsersContext();
+    const { dispatchUser } = useUsersContext();
 
     const handleLogout = () => {
         localStorage.removeItem("user");
-        dispatch({ type: "LOGOUT", payload: null });
+        dispatchUser({ type: "LOGOUT", payload: null });
     }
 
     return (
