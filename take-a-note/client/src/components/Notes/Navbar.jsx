@@ -12,7 +12,7 @@ const Navbar = () => {
     return (
         <>
             <h1 className="logo">Take-A-Note</h1>
-            <button onClick={handleLogout} className="logout-btn"><FontAwesomeIcon icon={faArrowRightFromBracket} size={"lg"} /></button>
+            <button className="logout" onClick={handleLogout}><FontAwesomeIcon icon={faArrowRightFromBracket} size={"lg"} /></button>
         </>
 
     )

@@ -39,16 +39,16 @@ const Notes = () => {
 
     return (
         <>
-            <div className="column-set">
-                <header>
+            <div className="layout-flex-notes">
+                <header className="top">
                     <Navbar></Navbar>
                 </header>
-                <main className="notes-main">
-                    <section className="form-container">
+                <main className="bottom">
+                    <section className="notes-form-container">
                         <NoteForm></NoteForm>
                     </section>
-                    <section className="notes-container">
-                        {notes.length !== 0 ? notes.map((note) => { return <Note key={note._id} note={note}></Note> }) : <h2>There are no notes</h2>}
+                    <section className="all-notes-container">
+                        {notes.length !== 0 ? notes.map((note) => { return <Note key={note._id} note={note}></Note> }) : <h1 className="notes-none">There are no notes</h1>}
                     </section>
                 </main>
             </div>

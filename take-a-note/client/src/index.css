@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+    --background-primary: hsl(255, 95%, 15%);
+    --background-secondary: hsl(255, 95%, 25%);
+    --background-tertiary: hsl(255, 95%, 35%);
+    --text-primary: hsl(0, 0%, 90%);
+    --text-secondary: hsl(0, 0%, 75%);
+    --text-tertiary: hsl(0, 0%, 50%);
+    font-size: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+#root {
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+.layout-flex-notes {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 3px 1px var(--background-tertiary);
+}
+
+.logo {
+    font-size: 2.5rem;
+    margin: 1rem;
+}
+
+.logout {
+    align-self: center;
+    margin: 0.5rem 1rem;
+    outline: none;
+    border: none;
+    background-color: var(--background-primary);
+    color: var(--text-tertiary);
+    cursor: pointer;
+}
+
+.logout:hover {
+    color: var(--text-primary);
+}
+
+.bottom {
+    flex: 1;
+}
+
+.notes-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notes-form {
+    margin: 2rem;
+    width: 28rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input {
+    margin: 1rem 0;
+    padding: 1rem;
+    font-size: 1.6rem;
+    background-color: var(--background-secondary);
+    color: var(--text-primary);
+    outline: none;
+    border: none;
+}
+
+.form-input:focus {
+    background-color: var(--background-tertiary);
+    color: var(--text-primary);
+    outline: none;
+    border: none;
+}
+
+textarea {
+    margin: 1rem 0;
+    padding: 1rem;
+    height: 20rem;
+    font-size: 1.6rem;
+    background-color: var(--background-secondary);
+    color: var(--text-primary);
+    outline: none;
+    border: none;
+    resize: none;
+}
+
+textarea:focus {
+    background-color: var(--background-tertiary);
+    color: var(--text-primary);
+    outline: none;
+    border: none;
+    resize: none;
+}
+
+.button-form {
+    margin: 1rem 0;
+    padding: 1rem;
+    width: 100%;
+    display: block;
+    font-size: 1.6rem;
+    background-color: var(--background-secondary);
+    color: var(--text-primary);
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.button-form:hover {
+    background-color: var(--background-tertiary);
+}
+
+.all-notes-container {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.note-container {
+    width: 28rem;
+    border: 2px solid var(--text-secondary);
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.note-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.note-content {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    white-space: pre-line;
+    text-align: left;
+}
+
+.notes-none {
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+.empty-title {
+    color: var(--text-tertiary);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.empty-text {
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--text-tertiary);
+}
+
+.button-action {
+    border: none;
+    outline: none;
+    margin-right: 1rem;
+    background-color: var(--background-primary);
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.button-action:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+.layout-flex-auth {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center {
+    min-width: 28rem;
+}
+
+.auth-heading {
+    text-align: center;
+    margin: 2rem;
+    font-size: 4rem;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    font-size: 1.6rem;
+}
+
+.button-auth-margin {
+    margin: 2rem 0;
+}
+
+.button-auth-center {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.error-alert {
+    margin: 1rem 0;
+    font-size: 1.6rem;
+    color: var(--text-tertiary);
+    text-align: center;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

@@ -84,14 +84,15 @@ const Auth = () => {
     }
 
     return (
-        <main>
-            <section>
-                <h1>Take-A-Note</h1>
-                {error && (<p>{error}</p>)}
+        <main className="layout-flex-auth">
+            <section className="center">
+                <h1 className="auth-heading">Take-A-Note</h1>
+                {error && (<p className="error-alert">{error}</p>)}
                 <form onSubmit={handleSubmit} noValidate className="auth-form">
-                    <div>
-                        <label htmlFor="email">Email</label>
+                    <div className="form-div">
+                        <label className="form-label" htmlFor="email">Email</label>
                         <input
+                            className="form-input"
                             type="email"
                             name="email"
                             id="email"
@@ -99,17 +100,17 @@ const Auth = () => {
                             onChange={(e) => (setFormData({ ...formData, email: e.target.value }))}
                         />
                     </div>
-                    <div >
-                        <label htmlFor="paswword">Password</label>
-                        <input type="password" name="password" id="password" value={formData.password} onChange={(e) => (setFormData({ ...formData, password: e.target.value }))} />
+                    <div className="form-div">
+                        <label className="form-label" htmlFor="paswword">Password</label>
+                        <input className="form-input" type="password" name="password" id="password" value={formData.password} onChange={(e) => (setFormData({ ...formData, password: e.target.value }))} />
                     </div>
-                    {isSignUp && (<div>
-                        <label htmlFor="confirmPaswword">Confirm Password</label>
-                        <input type="text" name="confirmPassword" id="confirmPassword" value={confirmPassword} onChange={(e) => (setConfirmPassword(e.target.value))} />
+                    {isSignUp && (<div className="form-div">
+                        <label className="form-label" htmlFor="confirmPaswword">Confirm Password</label>
+                        <input className="form-input" type="text" name="confirmPassword" id="confirmPassword" value={confirmPassword} onChange={(e) => (setConfirmPassword(e.target.value))} />
                     </div>)}
-                    <button type="submit">{isSignUp ? "Sign Up" : "Sign In"}</button>
+                    <button className="button-form button-auth-margin" type="submit">{isSignUp ? "Sign Up" : "Sign In"}</button>
                 </form>
-                <button onClick={() => switchMode()}>{isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}</button>
+                <button className="button-action button-auth-center" onClick={() => switchMode()}>{isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}</button>
             </section>
         </main>
     )

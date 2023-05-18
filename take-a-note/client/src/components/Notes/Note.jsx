@@ -16,11 +16,11 @@ const Note = ({ note }) => {
     }
 
     return (
-        <div className="note">
-            <h1>{note.title}</h1>
-            {note.text ? (<p>{note.text}</p>) : (<p>{"Empty Note"}</p>)}
-            <button onClick={handleEdit}>Edit</button>
-            <button onClick={handleClick}>Delete</button>
+        <div className="note-container">
+            {note.title ? (<h1 className="note-title">{note.title}</h1>) : (<h1 className="empty-title unselectable">No Title</h1>)}
+            {note.text ? (<p className="note-content">{note.text}</p>) : (<p className="empty-text unselectable">{"Empty Note"}</p>)}
+            <button className="button-action" onClick={handleEdit}>Edit</button>
+            <button className="button-action" onClick={handleClick}>Delete</button>
         </div>
     )
 }
