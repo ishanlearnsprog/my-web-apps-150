@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+    font-size: 10px;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#root {
+    min-height: 100vh;
+    background-color: hsl(255, 95%, 15%);
+    color: hsl(0, 0%, 88%);
+}
+
+.nowallet-container,
+.connectaccount-container,
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    font-family: 'Share Tech Mono', monospace;
+    margin: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    background-color: hsl(203, 84%, 50%);
+    color: hsl(0, 0%, 88%);
+    outline: none;
+    border: none;
+}
+
+button:hover {
+    background-color: hsl(203, 84%, 60%);
+}
+
+.current-account-info {
+    margin: 2rem 0;
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+
+.current-number-container {
+    margin: 2rem;
+}
+
+.current-number-container h1 {
+    font-size: 3rem;
+}
+
+.update-number-container {
+    margin: 2rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    font-family: 'Share Tech Mono', monospace;
+    padding: 1rem;
+    font-size: 1.5rem;
+    -moz-appearance: textfield;
+    outline: none;
+    border: none
+}
