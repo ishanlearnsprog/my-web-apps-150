@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import { SET_NOTES, CREATE_NOTE, UPDATE_NOTE, DELETE_NOTE, SET_NEW_NOTE, SET_EXISTING_NOTE } from "./types.jsx";
+import { SET_NOTES, CREATE_NOTE, UPDATE_NOTE, DELETE_NOTE, SET_NEW_NOTE, SET_EXISTING_NOTE, OPEN_MODAL, CLOSE_MODAL } from "./types.jsx";
 
 export const NotesContext = createContext();
 
@@ -40,6 +40,18 @@ export const NotesReducer = (state, action) => {
                 noteId: action.payload,
             }
         }
+        case OPEN_MODAL: {
+            return {
+                ...state,
+                modal: true,
+            }
+        }
+        case CLOSE_MODAL: {
+            return {
+                ...state,
+                modal: false,
+            }
+        }
         default:
             return state;
     }
@@ -49,6 +61,7 @@ export const NotesContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(NotesReducer, {
         notes: [],
         noteId: 0,
+        modal: false,
     })
 
     return (

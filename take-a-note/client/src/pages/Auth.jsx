@@ -9,12 +9,12 @@ const Auth = () => {
     const [formData, setFormData] = useState({ email: "", password: "" });
     const [isSignUp, setIsSignUp] = useState(false);
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
     const [confirmPassword, setConfirmPassword] = useState("");
 
     const clearSignUp = () => {
         setFormData({ email: "", password: "" });
         setConfirmPassword("");
-        setError("");
     }
 
     const clearSignIn = () => {
@@ -28,6 +28,7 @@ const Auth = () => {
         } else {
             clearSignIn();
         }
+        setError("");
         setIsSignUp(!isSignUp);
     }
 
@@ -50,30 +51,32 @@ const Auth = () => {
 
             if (formData.password !== confirmPassword) {
                 setError("Passwords do not match");
-                clear()
+                clearSignUp();
                 return;
             }
 
             if (!validator.isStrongPassword(formData.password)) {
-                setError("Password not strong enough");
-                clear();
+                setError("Password not strong enough\nMinimum 8 charachters\n1 uppercase 1 lowercase\n1 number 1 symbol ");
+                clearSignUp();
                 return
             }
 
+            setLoading(true);
             res = await signUpUser({ ...formData })
                 .catch((error) => {
                     setError(error?.response?.data?.error);
                     clearSignUp();
                 });
-
+            setLoading(false);
         } else {
 
+            setLoading(true);
             res = await signInUser({ ...formData })
                 .catch((error) => {
                     setError(error?.response?.data?.error);
                     clearSignIn();
                 });
-
+            setLoading(false);
         }
 
         if (res?.status === 200) {
@@ -108,7 +111,8 @@ const Auth = () => {
                         <label className="form-label" htmlFor="confirmPaswword">Confirm Password</label>
                         <input className="form-input" type="text" name="confirmPassword" id="confirmPassword" value={confirmPassword} onChange={(e) => (setConfirmPassword(e.target.value))} />
                     </div>)}
-                    <button className="button-form button-auth-margin" type="submit">{isSignUp ? "Sign Up" : "Sign In"}</button>
+                    {loading ? <button className="button-form button-auth-margin disabled-button" type="submit" disabled>{isSignUp ? "Signing Up..." : "Signing In..."}</button>
+                        : <button className="button-form button-auth-margin" type="submit" >{isSignUp ? "Sign Up" : "Sign In"}</button>}
                 </form>
                 <button className="button-action button-auth-center" onClick={() => switchMode()}>{isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}</button>
             </section>

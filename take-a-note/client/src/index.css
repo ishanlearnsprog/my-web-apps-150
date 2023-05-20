@@ -15,10 +15,10 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Share Tech Mono', monospace;
+    background-color: var(--background-primary);
 }
 
 #root {
-    background-color: var(--background-primary);
     color: var(--text-primary);
     min-height: 100vh;
 }
@@ -29,10 +29,15 @@
     flex-direction: column;
 }
 
+.stop-overflow {
+    height: 100vh;
+    overflow: hidden;
+}
+
 .top {
     display: flex;
     justify-content: space-between;
-    box-shadow: 0 0 3px 1px var(--background-tertiary);
+    border-bottom: 1px solid var(--background-tertiary);
 }
 
 .logo {
@@ -58,7 +63,24 @@
     flex: 1;
 }
 
+.make-note-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.make-note-container button {
+    margin: 3rem 0 1rem;
+    width: 28rem;
+}
+
 .notes-form-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background-primary);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -161,12 +183,6 @@ textarea:focus {
     color: var(--text-tertiary);
     font-size: 2rem;
     margin-bottom: 1rem;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
 .empty-text {
@@ -197,7 +213,7 @@ textarea:focus {
 }
 
 .center {
-    min-width: 28rem;
+    width: 28rem;
 }
 
 .auth-heading {
@@ -235,6 +251,7 @@ textarea:focus {
     font-size: 1.6rem;
     color: var(--text-tertiary);
     text-align: center;
+    white-space: pre-line;
 }
 
 .unselectable {
@@ -244,4 +261,22 @@ textarea:focus {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.disabled-button {
+    background-color: var(--background-tertiary);
+}
+
+@media (min-width: 640px) {
+    .make-note-container button {
+        width: 45rem;
+    }
+
+    .notes-form {
+        width: 40rem;
+    }
+
+    .note-container {
+        width: 45rem;
+    }
 }
