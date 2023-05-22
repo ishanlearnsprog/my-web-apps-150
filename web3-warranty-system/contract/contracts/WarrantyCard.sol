@@ -1,0 +1,45 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.9;
+
+import "./node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "./node_modules/@openzeppelin/contracts/access/Ownable.sol";
+import "./node_modules/@openzeppelin/contracts/utils/Counters.sol";
+
+contract WarrantyCard is ERC721, Ownable {
+    using Counters for Counters.Counter;
+
+    Counters.Counter private _tokenIdCounter;
+
+    struct warrantyInfo {
+        address seller;
+        string productId;
+        uint256 startTime;
+        uint256 endTime;
+    }
+
+    mapping(uint256 => warrantyInfo) private tokens;
+
+    constructor() ERC721("Warranty Card", "WAR") {}
+
+    function createWarrantyCard(address to, uint256 duration) public {
+        uint256 tokenId = _tokenIdCounter.current();
+        _tokenIdCounter.increment();
+        _safeMint(to, tokenId);
+        tokens[tokenId].seller = msg.sender;
+        tokens[tokenId].startTime = block.timestamp;
+        tokens[tokenId].endTime = tokens[tokenId].startTime + duration;
+    }
+
+    function checkWarrantyPeriod(uint256 tokenId) public view returns (bool) {
+        require(
+            msg.sender == tokens[tokenId].seller ||
+                msg.sender == ownerOf(tokenId),
+            "Only the seller and the buyer can check warranty"
+        );
+        if (tokens[tokenId].endTime >= block.timestamp) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
