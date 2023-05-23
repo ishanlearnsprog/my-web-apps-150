@@ -1,2 +1,0 @@
-# Number Store
-My first shot at making Web3 projects. I deployed a smart contract on my local Hardhat node and connected it to a ReactJS frontend using Ethers. I learned how to connect to the wallet and send static as well as state-changing calls.
