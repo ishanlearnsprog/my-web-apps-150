@@ -26,13 +26,13 @@ export const UserContextProvider = ({ children }) => {
             setUserError("There is an issue with your Metamask Wallet");
         } else {
             user.address = accounts[0];
+            localStorage.setItem("user", JSON.stringify(user));
             try {
                 setUserLoading(true);
                 const { data } = await signIn(user.address);
                 if (data) {
                     user.role = data.role;
                 }
-                localStorage.setItem("user", JSON.stringify(user));
                 setUserLoading(false);
             } catch (error) {
                 console.log(error);
