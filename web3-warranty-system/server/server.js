@@ -7,6 +7,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 
 import userRoutes from "./routes/users.js";
+import productRoutes from "./routes/products.js";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use("/", userRoutes);
+app.use("/", productRoutes);
 
 mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {

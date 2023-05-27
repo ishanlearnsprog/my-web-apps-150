@@ -6,72 +6,75 @@ import {
 } from "react";
 
 import {
-    signIn,
-    signUp,
+    signInUser,
+    signUpUser,
 } from "../utils/api.jsx";
 
-import { ethers } from "ethers";
-
-const { ethereum } = window;
 const UserContext = createContext();
+const { ethereum } = window;
 
 export const UserContextProvider = ({ children }) => {
     const [user, setUser] = useState({ address: "", role: "" });
-    const [userLoading, setUserLoading] = useState(false);
-    const [userError, setUserError] = useState("");
 
-    const setAccount = async () => {
-        const accounts = await ethereum.request({ method: "eth_requestAccounts" });
-        if (accounts.length === 0) {
-            setUserError("There is an issue with your Metamask Wallet");
-        } else {
-            user.address = accounts[0];
-            localStorage.setItem("user", JSON.stringify(user));
-            try {
-                setUserLoading(true);
-                const { data } = await signIn(user.address);
-                if (data) {
-                    user.role = data.role;
-                }
-                setUserLoading(false);
-            } catch (error) {
-                console.log(error);
+    const setAddress = async () => {
+        try {
+            const accounts = await ethereum.request({ "method": "eth_requestAccounts" });
+            const address = accounts[0];
+            if (!address) throw Error("THERE WAS SOME ISSUE WITH YOUR METAMASK WALLET");
+            setUser({ ...user, address })
+            const { data } = await signInUser(address);
+            if (data) {
+                const role = data.role;
+                setUser({ address, role });
+                localStorage.setItem("user", JSON.stringify({ address, role }));
             }
+        } catch (error) {
+            console.log(error)
         }
     }
 
     const setRole = async (role) => {
         try {
-            setUserLoading(true);
-            const { data } = await signUp(user.address, role);
+            const { data } = await signUpUser(user.address, role);
             if (data) {
-                user.address = data.address;
-                user.role = data.role;
+                const role = data.role;
+                setUser({ ...user, role });
+                localStorage.setItem("user", JSON.stringify({ ...user, role }));
             }
-            setUserLoading(false);
         } catch (error) {
             console.log(error);
         }
     }
 
-    const unsetAccount = () => {
+    const setConnectedAccount = async () => {
+        try {
+            const storedUser = JSON.parse(localStorage.getItem("user"));
+            if (storedUser) {
+                setUser({ ...storedUser });
+            } else {
+                unsetAddress();
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const unsetAddress = () => {
         setUser({ address: "", role: "" });
         localStorage.removeItem("user");
     }
 
     useEffect(() => {
-        if (!ethereum) {
-            setUserError("Please Install Metamask")
-        } else {
-            const savedUser = JSON.parse(localStorage.getItem("user"));
-            if (savedUser) {
-                setUser({ ...savedUser });
-            }
+        try {
+            if (!ethereum) throw Error("PLEASE INSTALL METAMASK");
+            setConnectedAccount();
+        } catch (error) {
+            console.log(error);
         }
-    }, [])
+    }, []);
 
     return (
-        <UserContext.Provider value={{ user, userLoading, userError, setAccount, setRole, unsetAccount }}>
+        <UserContext.Provider value={{ user, setAddress, setRole, unsetAddress }}>
             {children}
         </UserContext.Provider>
     )

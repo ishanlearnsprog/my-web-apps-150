@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
 const schemaProduct = mongoose.Schema({
     name: {
@@ -9,15 +9,23 @@ const schemaProduct = mongoose.Schema({
         type: String,
         required: true,
     },
-    prince: {
+    price: {
         type: Number,
         required: true,
+    },
+    seller: {
+        type: String,
+        required: true,
+    },
+    buyer: {
+        type: String,
+        default: "",
     },
     sold: {
         type: Boolean,
         default: false,
     },
-    warrantyOfferred: {
+    warrantyOffered: {
         type: Boolean,
         default: false,
     },
