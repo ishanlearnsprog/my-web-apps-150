@@ -162,17 +162,19 @@ textarea:focus {
     padding: 1rem;
 }
 
+.note-content {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    overflow-x: hidden;
+    white-space: pre-wrap;
+    text-align: left;
+}
+
 .note-title {
     font-size: 2rem;
     margin-bottom: 1rem;
 }
 
-.note-content {
-    font-size: 1.6rem;
-    margin-bottom: 1.5rem;
-    white-space: pre-line;
-    text-align: left;
-}
 
 .notes-none {
     text-transform: uppercase;
