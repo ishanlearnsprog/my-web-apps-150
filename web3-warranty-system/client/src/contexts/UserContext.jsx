@@ -5,13 +5,13 @@ import {
     createContext,
 } from "react";
 
+
 import {
     signInUser,
     signUpUser,
 } from "../utils/api.jsx";
 
 const UserContext = createContext();
-const { ethereum } = window;
 
 export const UserContextProvider = ({ children }) => {
     const [user, setUser] = useState({ address: "", role: "" });

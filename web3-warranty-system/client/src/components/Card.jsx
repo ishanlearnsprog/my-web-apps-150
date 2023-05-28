@@ -16,7 +16,11 @@ const Card = ({ product }) => {
             <h1>Name: {product.name}</h1>
             <p>&#8377;{product.price}</p>
             {user.role === "seller" && product.sold === true && <h3>Sold</h3>}
-
+            {user.role === "seller"
+                && product.sold === true
+                && product.warrantyOffered === true
+                && product.warrantyActive === false
+                && <h3>Unactive Warranty</h3>}
         </div>
     )
 }

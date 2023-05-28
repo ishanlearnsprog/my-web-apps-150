@@ -12,8 +12,6 @@ contract WarrantyCard is ERC721, Ownable {
 
     struct warrantyInfo {
         address seller;
-        string productId;
-        uint256 startTime;
         uint256 endTime;
     }
 
@@ -21,13 +19,16 @@ contract WarrantyCard is ERC721, Ownable {
 
     constructor() ERC721("Warranty Card", "WAR") {}
 
-    function createWarrantyCard(address to, uint256 duration) public {
+    function createWarrantyCard(
+        address to,
+        uint256 duration
+    ) public returns (uint256) {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
         tokens[tokenId].seller = msg.sender;
-        tokens[tokenId].startTime = block.timestamp;
-        tokens[tokenId].endTime = tokens[tokenId].startTime + duration;
+        tokens[tokenId].endTime = block.timestamp + duration;
+        return tokenId;
     }
 
     function checkWarrantyPeriod(uint256 tokenId) public view returns (bool) {

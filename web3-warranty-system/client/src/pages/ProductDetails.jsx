@@ -3,7 +3,7 @@ import { useProductContext } from "../contexts/ProductContext.jsx";
 
 const ProductDetails = () => {
     const { user } = useUserContext();
-    const { currentProduct, purchaseProduct } = useProductContext();
+    const { currentProduct, purchaseProduct, activateWarrantyOnProduct } = useProductContext();
     return (
         <main>
             <h1>Name: {currentProduct.name}</h1>
@@ -16,7 +16,7 @@ const ProductDetails = () => {
             {currentProduct.sold &&
                 currentProduct.warrantyOffered === true &&
                 currentProduct.warrantyActive === false &&
-                <button>Activate Warranty</button>}
+                <button onClick={() => activateWarrantyOnProduct(currentProduct)}>Activate Warranty</button>}
         </main>
     )
 }

@@ -13,6 +13,17 @@ import {
     buyProduct,
 } from "../utils/api.jsx"
 
+import { ethers } from "ethers";
+import { AlchemyProvider } from "@ethersproject/providers";
+import { contractAddress, contractABI, api_key } from "../utils/war.jsx";
+
+console.log(ethers)
+const createEthereumContract = () => {
+    const provider = new AlchemyProvider("maticmum", api_key);
+    const warrantyCardContract = new ethers.Contract(contractAddress, contractABI, provider);
+    return warrantyCardContract;
+}
+
 import { usePageContext } from "./PageContext.jsx";
 import { useUserContext } from "./UserContext.jsx";
 
@@ -47,6 +58,7 @@ export const ProuctContextProvider = ({ children }) => {
                     setMyProducts([newProduct.data, ...myProducts]);
                     setOnSaleProducts(onSaleProducts.filter(product => product._id !== productId));
                 }
+                setCurrentPage("myProducts");
             } catch (error) {
                 console.log(error);
             }
@@ -61,6 +73,14 @@ export const ProuctContextProvider = ({ children }) => {
         }
         setProductId(id);
         setCurrentPage("productDetails")
+    }
+
+    const activateWarrantyOnProduct = async (product) => {
+        const buyer = product.buyer;
+        const duration = ethers.parseEther((2592000 * product.warrantyPeriodInMonths) + (31536000 * product.warrantyPeriodInYears));
+        const contract = createEthereumContract();
+        const tx = await contract.createWarrantyCard(buyer, duration);
+        console.log(tx);
     }
 
     const getInitialValues = async () => {
@@ -97,6 +117,7 @@ export const ProuctContextProvider = ({ children }) => {
             addProductToStore,
             selectProduct,
             purchaseProduct,
+            activateWarrantyOnProduct,
         }}>
             {children}
         </ProductContext.Provider>

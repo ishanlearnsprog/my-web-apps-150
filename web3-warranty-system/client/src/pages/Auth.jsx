@@ -3,18 +3,16 @@ import { useUserContext } from "../contexts/UserContext.jsx"
 const Auth = () => {
     const { user, setAddress, setRole } = useUserContext();
     return (
-        <main>
-            <div>
-                <h1>Web3 Shop</h1>
-            </div>
+        <main className="auth-container">
+            <h1>Web3 Shop</h1>
             {user.address ? (
-                <div>
-                    <button onClick={() => setRole("buyer")}>Buyer</button>
-                    <button onClick={() => setRole("seller")}>Seller</button>
+                <div className="button-container">
+                    <button className="button button-auth" onClick={() => setRole("buyer")}>Buyer</button>
+                    <button className="button button-auth" onClick={() => setRole("seller")}>Seller</button>
                 </div>
             ) : (
-                <div>
-                    <button onClick={() => setAddress()}>Connect Account</button>
+                <div className="button-container">
+                    <button className="button button-auth" onClick={() => setAddress()}>Connect Account</button>
                 </div>)
             }
         </main>
