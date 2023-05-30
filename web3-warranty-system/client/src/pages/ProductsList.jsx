@@ -29,7 +29,7 @@ const MyProducts = () => {
 
 
     return (
-        <main>
+        <main className="products-container">
             {productList}
         </main>
     );

@@ -6,7 +6,7 @@ import { useUserContext } from "./contexts/UserContext.jsx"
 const App = () => {
     const { user } = useUserContext();
     return (
-        <div className="layout-container">
+        <div>
             {user.address && user.role ? <Store></Store> : <Auth></Auth>}
         </div>
     )

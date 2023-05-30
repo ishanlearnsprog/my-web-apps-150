@@ -26,7 +26,7 @@ const Store = () => {
     }
 
     return (
-        <div>
+        <div className="layout-container">
             <Header></Header>
             {pageView()}
         </div>
