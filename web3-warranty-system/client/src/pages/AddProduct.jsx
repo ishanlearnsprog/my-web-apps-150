@@ -32,7 +32,7 @@ const AddProduct = () => {
     }
 
     return (
-        <main>
+        <div>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div>
                     <input
@@ -93,7 +93,7 @@ const AddProduct = () => {
             }}>
                 {formData.warrantyOffered === true ? "Remove Warranty" : "Add Warranty"}
             </button>
-        </main>
+        </div>
     )
 }
 

@@ -12,9 +12,9 @@ const Card = ({ product }) => {
     }
 
     return (
-        <div onClick={() => handleSelect()}>
-            <h1>Name: {product.name}</h1>
-            <p>&#8377;{product.price}</p>
+        <div onClick={() => handleSelect()} className="card-container">
+            <h1 className="product-name">{product.name}</h1>
+            {user.sold === false && <p className="product-price">&#8377;{product.price}</p>}
             {user.role === "seller" && product.sold === true && <h3>Sold</h3>}
             {user.role === "seller"
                 && product.sold === true

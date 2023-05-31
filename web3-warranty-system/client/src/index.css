@@ -23,6 +23,7 @@ html {
 
 .auth-container {
     flex: 1;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -109,8 +110,21 @@ header nav ul {
 
 .products-container {
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.card-container {
+    width: 80%;
+    box-shadow: 0px 0px 3px 0 #333;
+    border-radius: 1rem;
+    margin: 2rem;
+    padding: 2rem;
+    max-height: 15rem;
+    cursor: pointer;
+}
+
+.card-container .product-name {
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }

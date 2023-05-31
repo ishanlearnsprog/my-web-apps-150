@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 import Card from "../components/Card.jsx";
 import { useUserContext } from "../contexts/UserContext.jsx"
 import { usePageContext } from "../contexts/PageContext.jsx";
@@ -20,18 +22,18 @@ const MyProducts = () => {
     } else if (currentPage === "myProducts") {
         productList = myProducts.map((product) => {
             return (
-                <div key={product._id}>
+                <Fragment key={product._id}>
                     <Card product={product}></Card>
-                </div>
+                </Fragment>
             )
         })
     }
 
 
     return (
-        <main className="products-container">
+        <div className="products-container">
             {productList}
-        </main>
+        </div>
     );
 }
 
