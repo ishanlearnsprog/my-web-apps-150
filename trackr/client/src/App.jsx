@@ -3,12 +3,15 @@ import {
     RouterProvider,
 } from "react-router-dom";
 
-import Accounts from "./components/Accounts";
-import Analytics from "./components/Analytics";
-import Dashboard from "./components/Dashboard";
-import Landing from "./components/Landing";
-import Records from "./components/Records";
-import Wallet from "./components/Wallet";
+import { GlobalContextProvider } from "./contexts/GlobalContext.jsx";
+
+import Accounts from "./pages/Wallet/Accounts/Accounts.jsx";
+import Analytics from "./pages/Wallet/Analytics/Analytics.jsx";
+import Dashboard from "./pages/Wallet/Dashboard/Dashboard.jsx";
+import Landing from "./pages/Landing/Landing.jsx";
+import Records from "./pages/Wallet/Records/Records.jsx";
+import Settings from "./pages/Wallet/Settings/Settings.jsx";
+import Wallet from "./pages/Wallet/Wallet.jsx";
 
 const App = () => {
     const router = createBrowserRouter([
@@ -40,12 +43,18 @@ const App = () => {
                     path: "/records",
                     element: <Records></Records>
                 },
+                {
+                    path: "/settings",
+                    element: <Settings></Settings>
+                },
             ]
         }
     ])
 
     return (
-        <RouterProvider router={router}></RouterProvider>
+        <GlobalContextProvider>
+            <RouterProvider router={router}></RouterProvider>
+        </GlobalContextProvider>
     )
 }
 

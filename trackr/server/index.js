@@ -23,3 +23,5 @@ mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnified
         })
     })
     .catch((error) => console.log(error));
+
+export const connection = mongoose.connection;

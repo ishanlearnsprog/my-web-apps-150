@@ -2,10 +2,12 @@ import {
     Outlet
 } from "react-router-dom";
 
+import Header from "./Header/Header.jsx";
+
 const Wallet = () => {
     return (
         <>
-            <h1>Wallet</h1>
+            <Header></Header>
             <Outlet></Outlet>
         </>
     )
