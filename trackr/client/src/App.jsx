@@ -20,7 +20,7 @@ const App = () => {
             element: <Landing></Landing>
         },
         {
-            path: "/",
+            path: "/wallet",
             element: <Wallet></Wallet>,
             children: [
                 {
@@ -28,23 +28,23 @@ const App = () => {
                     element: <Dashboard></Dashboard>
                 },
                 {
-                    path: "/dashboard",
+                    path: "/wallet/dashboard",
                     element: <Dashboard></Dashboard>
                 },
                 {
-                    path: "/accounts",
+                    path: "/wallet/accounts",
                     element: <Accounts></Accounts>
                 },
                 {
-                    path: "/analytics",
+                    path: "/wallet/analytics",
                     element: <Analytics></Analytics>
                 },
                 {
-                    path: "/records",
+                    path: "/wallet/records",
                     element: <Records></Records>
                 },
                 {
-                    path: "/settings",
+                    path: "/wallet/settings",
                     element: <Settings></Settings>
                 },
             ]

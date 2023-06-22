@@ -7,22 +7,22 @@ const Header = () => {
     return (
         <>
             <header>
-                <h1><NavLink to="/">TrackR</NavLink></h1>
+                <h1><NavLink to="/wallet">TrackR</NavLink></h1>
                 <nav>
                     <div>
-                        <NavLink to="/dashboard">Dashboard</NavLink>
+                        <NavLink to="/wallet/dashboard">Dashboard</NavLink>
                     </div>
                     <div>
-                        <NavLink to="/accounts">Accounts</NavLink>
+                        <NavLink to="/wallet/accounts">Accounts</NavLink>
                     </div>
                     <div>
-                        <NavLink to="/records">Records</NavLink>
+                        <NavLink to="/wallet/records">Records</NavLink>
                     </div>
                     <div>
-                        <NavLink to="/analytics">Analytics</NavLink>
+                        <NavLink to="/wallet/analytics">Analytics</NavLink>
                     </div>
                     <div>
-                        <NavLink to="/settings">Settings</NavLink>
+                        <NavLink to="/wallet/settings">Settings</NavLink>
                     </div>
                 </nav>
                 <div>
