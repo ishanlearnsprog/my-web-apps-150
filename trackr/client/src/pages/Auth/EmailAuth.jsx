@@ -20,7 +20,6 @@ const EmailAuth = () => {
     });
 
     useEffect(() => {
-        console.log(user);
         if (user) navigate("/wallet");
     }, [user])
 

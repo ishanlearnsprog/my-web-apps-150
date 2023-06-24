@@ -19,23 +19,21 @@ import Wallet, {
 } from "./pages/Wallet/Wallet.jsx";
 
 import { UserContextProvider } from "./contexts/UserContext.jsx";
+import { WalletContextProvider } from "./contexts/WalletContext.jsx";
 
 const App = () => {
     const router = createBrowserRouter([
         {
             path: "/",
             element: <Landing></Landing>,
-            // loader: landingLoader,
         },
         {
             path: "/auth",
             element: <EmailAuth></EmailAuth>,
-            // loader: emailAuthLoader,
         },
         {
             path: "/wallet",
             element: <Wallet></Wallet>,
-            // loader: walletLoader,
             children: [
                 {
                     index: true,
@@ -67,7 +65,9 @@ const App = () => {
 
     return (
         <UserContextProvider>
-            <RouterProvider router={router}></RouterProvider>
+            <WalletContextProvider>
+                <RouterProvider router={router}></RouterProvider>
+            </WalletContextProvider>
         </UserContextProvider>
     )
 }
