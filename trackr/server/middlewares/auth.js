@@ -11,7 +11,7 @@ const requireAuth = async (req, res, next) => {
 
     try {
         const data = jwt.verify(token, process.env.SECRET_KEY);
-        req.body.userId = data?._id;
+        req.body.userId = data?.userId;
         next();
     } catch (error) {
         console.log(error)

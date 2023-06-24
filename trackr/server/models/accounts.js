@@ -9,14 +9,14 @@ const accountSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    amount: {
+    initialAmount: {
         type: String,
         required: true,
     },
-    user: {
+    userId: {
         type: String,
         required: true,
-    }
+    },
 })
 
 const Account = mongoose.model("Account", accountSchema);

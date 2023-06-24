@@ -17,13 +17,6 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    otp: {
-        type: String,
-    },
-    verified: {
-        type: Boolean,
-        default: false,
-    }
 }, { timestamps: true });
 
 const User = mongoose.model("User", userSchema);

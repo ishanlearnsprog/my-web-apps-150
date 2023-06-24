@@ -10,10 +10,18 @@ const recordSchema = mongoose.Schema({
         required: true,
     },
     category: {
-        type: String,
-        required: true,
+        type: mongoose.Types.ObjectId,
+        ref: "Category",
     },
-    user: {
+    recievingAccount: {
+        type: mongoose.Types.ObjectId,
+        ref: "Account",
+    },
+    account: {
+        type: mongoose.Types.ObjectId,
+        ref: "Account",
+    },
+    userId: {
         type: String,
         requires: true,
     }

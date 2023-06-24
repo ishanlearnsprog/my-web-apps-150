@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 
-import { User, Account } from "../models/index.js";
+import { User, Account, Record } from "../models/index.js";
 import { createToken } from "../helpers/tokens.js";
 import { checkEmail } from "../helpers/validators.js";
 
@@ -22,11 +22,11 @@ export const signUpUser = async (req, res) => {
             password: hash
         });
 
-        const defaultAccount = await Account.create({
+        await Account.create({
             name: "Cash",
             type: "Cash",
-            amount: 0,
-            user: user._id
+            initialAmount: 0,
+            userId: user._id
         });
 
         const token = createToken(user._id);
@@ -72,13 +72,25 @@ export const signInUser = async (req, res) => {
 export const changeName = async (req, res) => {
     try {
         const { userId, userData } = req.body;
-        const user = await User.findOneAndUpdate({ userId }, { firstName: userData.firstName, lastName: userData.lastName }, { new: true });
+        const user = await User.findOneAndUpdate({ _id: userId }, { firstName: userData.firstName, lastName: userData.lastName }, { new: true });
         res.status(200).json({
             _id: user._id,
             firstName: user.firstName,
             lastName: user?.lastName,
             email: user.email,
         });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+}
+
+export const deleteAccount = async (req, res) => {
+    try {
+        const { userId } = req.body;
+        await Record.deleteMany({ userId });
+        await Account.deleteMany({ userId });
+        await User.deleteMany({ _id: userId });
+        res.status(200).json(userId);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
