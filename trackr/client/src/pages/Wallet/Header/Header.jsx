@@ -1,9 +1,15 @@
 import { NavLink } from "react-router-dom";
 
-import { useGlobalContext } from "../../../contexts/GlobalContext.jsx";
+import { getUserContext } from "../../../contexts/UserContext.jsx";
 
 const Header = () => {
-    const { user } = useGlobalContext();
+    const { userDispatch } = getUserContext();
+
+    const handleLogout = () => {
+        localStorage.removeItem("user");
+        userDispatch({ type: "LOGOUT" });
+    }
+
     return (
         <>
             <header>
@@ -25,9 +31,7 @@ const Header = () => {
                         <NavLink to="/wallet/settings">Settings</NavLink>
                     </div>
                 </nav>
-                <div>
-                    <h1>{user?.firstName} {user?.lastName}</h1>
-                </div>
+                <button onClick={handleLogout}>Logout</button>
             </header>
         </>
     )
