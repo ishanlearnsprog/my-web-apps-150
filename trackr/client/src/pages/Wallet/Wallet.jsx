@@ -20,8 +20,8 @@ import {
 
 const Wallet = () => {
     const navigate = useNavigate();
-    const { user, userDispatch } = getUserContext();
-    const { accounts, categories, records, walletDispatch } = getWalletContext();
+    const { user } = getUserContext();
+    const { walletDispatch } = getWalletContext();
 
     const fetchData = async () => {
         try {
@@ -30,8 +30,8 @@ const Wallet = () => {
             const resRecords = await getRecords();
             if (resAccounts.status === 200 && resCategories.status === 200 && resRecords.status === 200) {
                 walletDispatch({ type: "GET_ACCOUNTS", payload: resAccounts.data });
-                walletDispatch({ type: "GET_CATEGORIES", payload: resCategories.data });
                 walletDispatch({ type: "GET_RECORDS", payload: resRecords.data });
+                walletDispatch({ type: "GET_CATEGORIES", payload: resCategories.data });
             }
         } catch (error) {
             console.log(error);

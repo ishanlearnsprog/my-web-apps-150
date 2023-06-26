@@ -36,7 +36,6 @@ const EmailAuth = () => {
     const handleSubmit = async (e) => {
         try {
             e.preventDefault();
-            console.log(userData)
             let res;
             if (isSignUp) {
                 res = await signUpUser(userData);
@@ -60,57 +59,63 @@ const EmailAuth = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <main className="auth-container">
+            <h1 className="logo">TrackR</h1>
+            <div className="main-container">
+                <section className="email-auth-container">
+                    <h2>{isSignUp ? "Sign Up" : "Sign In"}</h2>
+                    <p>{isSignUp ? "Create Your Account" : "Login To Your Account"}</p>
+                    <form onSubmit={handleSubmit} className="email-auth-form">
+                        <div>
+                            {isSignUp &&
+                                <input
+                                    type="text"
+                                    placeholder="First Name"
+                                    value={userData.firstName}
+                                    onChange={(e) => setUserData({ ...userData, firstName: e.target.value })} />
+                            }
+                        </div>
 
-                <div>
-                    {isSignUp &&
-                        <input
-                            type="text"
-                            placeholder="First Name"
-                            value={userData.firstName}
-                            onChange={(e) => setUserData({ ...userData, firstName: e.target.value })} />
-                    }
-                </div>
+                        <div>
+                            {isSignUp &&
+                                <input
+                                    type="text"
+                                    placeholder="Last Name"
+                                    value={userData.lastName}
+                                    onChange={(e) => setUserData({ ...userData, lastName: e.target.value })} />
+                            }
+                        </div>
 
-                <div>
-                    {isSignUp &&
-                        <input
-                            type="text"
-                            placeholder="Last Name"
-                            value={userData.lastName}
-                            onChange={(e) => setUserData({ ...userData, lastName: e.target.value })} />
-                    }
-                </div>
+                        <div>
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                value={userData.email}
+                                onChange={(e) => setUserData({ ...userData, email: e.target.value })} />
+                        </div>
 
-                <div>
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        value={userData.email}
-                        onChange={(e) => setUserData({ ...userData, email: e.target.value })} />
-                </div>
+                        <div>
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                value={userData.password}
+                                onChange={(e) => setUserData({ ...userData, password: e.target.value })} />
+                        </div>
 
-                <div>
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        value={userData.password}
-                        onChange={(e) => setUserData({ ...userData, password: e.target.value })} />
-                </div>
-
-                <div>
-                    <button type="submit">
-                        {isSignUp ? "Sign Up" : "Sign In"}
-                    </button>
-                </div>
-            </form>
-            <div>
-                <button onClick={switchMode}>
-                    {isSignUp ? "Sign In" : "Sign Up"}
-                </button>
+                        <div>
+                            <button type="submit">
+                                {isSignUp ? "Sign Up" : "Sign In"}
+                            </button>
+                        </div>
+                    </form>
+                    <div className="switch-btn-container">
+                        <button onClick={switchMode}>
+                            {isSignUp ? "Already have an account? Sign In" : "Don't have and account? Sign Up"}
+                        </button>
+                    </div>
+                </section>
             </div>
-        </div>
+        </main>
     )
 }
 

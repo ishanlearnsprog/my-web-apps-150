@@ -4,7 +4,7 @@ const api = axios.create({ baseURL: "http://localhost:8000" });
 
 const config = {
     headers: {
-        authorization: `Bearer ${(JSON.parse(localStorage.getItem("user"))).token}`
+        authorization: `Bearer ${(JSON.parse(localStorage.getItem("user")))?.token}`
     }
 }
 
