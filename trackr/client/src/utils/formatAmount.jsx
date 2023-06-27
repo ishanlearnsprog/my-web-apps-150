@@ -1,4 +1,7 @@
 export const formatAmountIndia = (amount) => {
     if (!amount) return "0";
-    return (+amount).toLocaleString("hi");
+    amount = (+amount).toLocaleString("hi", {
+        minimumFractionDigits: 2, maximumFractionDigits: 2
+    });
+    return amount;
 }

@@ -189,7 +189,7 @@ html {
 
 .wallet-menu-content {
     width: 100%;
-    position: fixed;
+    position: absolute;
     top: 65px;
     left: 0;
     background-color: hsl(0, 0%, 100%);
@@ -335,6 +335,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     padding: 2rem 1rem;
     background-color: hsl(0, 0%, 75%);
 }
