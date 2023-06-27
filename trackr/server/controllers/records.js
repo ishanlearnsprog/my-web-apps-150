@@ -29,7 +29,7 @@ export const deleteRecord = async (req, res) => {
 export const fetchRecords = async (req, res) => {
     try {
         const { userId } = req.body;
-        const records = await Record.find({ userId }).populate("category account recievingAccount");
+        const records = await Record.find({ userId }).populate("category account recievingAccount").sort({ createdAt: -1 });
         res.status(200).json(records);
     } catch (error) {
         res.status(400).json({ error: error.message });

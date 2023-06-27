@@ -18,6 +18,8 @@ html {
 
 #root {
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .landing-container {
@@ -90,6 +92,14 @@ html {
 .email-auth-container {
     max-width: 26rem;
     width: 100%;
+}
+
+.logo-auth {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .email-auth-container h2 {
@@ -199,7 +209,7 @@ html {
 .wallet-menu-content li {
     font-size: 1.6rem;
     list-style-type: none;
-    margin: 2rem 1rem;
+    margin: 2rem 1.5rem;
 }
 
 .wallet-menu-content i {
@@ -220,14 +230,20 @@ html {
 }
 
 .dashboard-accounts-container {
-    padding: 1rem;
-    background-color: hsl(0, 0%, 90%);
+    padding: 2rem 1rem;
+    background-color: hsl(100, 50%, 50%);
 }
 
 .section-header {
     display: flex;
     justify-content: space-between;
     margin: 1rem 0 2rem;
+}
+
+.dashboard-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .dashboard-accounts-container .section-heading {
@@ -274,17 +290,23 @@ html {
 }
 
 .account-card p {
+    color: hsla(0, 0%, 0%, 0.7);
     font-size: 1.6rem;
     margin-bottom: .2rem;
 }
 
 .account-card button {
+    color: hsla(0, 0%, 0%, 0.7);
     align-self: center;
     font-size: 1.6rem;
     outline: none;
     border: none;
     background-color: transparent;
     cursor: pointer;
+}
+
+.account-card button:hover {
+    color: hsla(0, 0%, 0%, 1);
 }
 
 .account-card:hover {
@@ -294,15 +316,109 @@ html {
 .add-account-card {
     width: 25rem;
     max-width: 25rem;
-    border: 3px dashed hsl(0, 0%, 65%);
+    border: 3px dashed hsl(0, 0%, 85%);
     border-radius: 1rem;
     padding: 2rem 0;
     font-size: 1.6rem;
-    color: hsl(0, 0%, 65%);
+    background-color: transparent;
+    color: hsl(0, 0%, 85%);
     cursor: pointer;
 }
 
 .add-account-card:hover {
-    border: 3px dashed hsl(0, 0%, 50%);
-    color: hsl(0, 0%, 50%);
+    border: 3px dashed hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 100%);
+}
+
+.dashboard-cards-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+    background-color: hsl(0, 0%, 75%);
+}
+
+.dashboard-records-container {
+    width: 26rem;
+    max-width: 26rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    background-color: hsl(0, 0%, 100%);
+}
+
+.dashboard-records-section-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.dashboard-records-section-header h1 {
+    align-self: center;
+    font-size: 1.6rem;
+}
+
+.dashboard-btn {
+    align-self: center;
+    outline: none;
+    border: none;
+    border-radius: .3rem;
+    padding: .3rem .7rem;
+    font-size: 1rem;
+    background-color: hsl(100, 50%, 50%);
+    color: hsl(0, 0%, 100%);
+    cursor: pointer;
+}
+
+.dashboard-btn:hover {
+    background-color: hsl(100, 50%, 45%);
+}
+
+.dashboard-records-section-content {
+    height: 27rem;
+}
+
+.record-card-items {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0rem;
+    border-bottom: 1px solid hsl(0, 0%, 75%);
+}
+
+.record-type-section {
+    align-self: center;
+}
+
+.record-info-section {
+    flex: 1;
+    padding: 0 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.record-info-section h1 {
+    font-size: 1.6rem;
+}
+
+.record-info-section p {
+    font-size: 1.2rem;
+}
+
+.record-card-items:first-of-type {
+    border-top: 1px solid hsl(0, 0%, 75%);
+    ;
+}
+
+.record-amount-section {
+    align-self: center;
+    font-size: 1.2rem;
+}
+
+.dashboard-records-section-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1rem;
 }

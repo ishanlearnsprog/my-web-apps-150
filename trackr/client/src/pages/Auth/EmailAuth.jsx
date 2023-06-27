@@ -60,7 +60,7 @@ const EmailAuth = () => {
 
     return (
         <main className="auth-container">
-            <h1 className="logo">TrackR</h1>
+            <h1 className="logo-auth" onClick={() => navigate("/")}>TrackR</h1>
             <div className="main-container">
                 <section className="email-auth-container">
                     <h2>{isSignUp ? "Sign Up" : "Sign In"}</h2>
