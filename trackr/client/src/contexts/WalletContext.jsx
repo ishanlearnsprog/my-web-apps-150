@@ -28,7 +28,6 @@ const walletReducer = (state, action) => {
             }
         }
         case "CALC_BALANCES": {
-
             return {
                 ...state,
                 balances: action.payload

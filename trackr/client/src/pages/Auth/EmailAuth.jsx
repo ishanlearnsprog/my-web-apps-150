@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 
 import { getUserContext } from "../../contexts/UserContext.jsx";
@@ -9,7 +10,7 @@ import {
 } from "../../utils/api.jsx";
 
 const EmailAuth = () => {
-    const { user, userDispatch } = getUserContext();
+    const { userDispatch } = getUserContext();
     const navigate = useNavigate();
     const [isSignUp, setIsSignUp] = useState(false);
     const [userData, setUserData] = useState({
@@ -18,10 +19,6 @@ const EmailAuth = () => {
         email: "",
         password: "",
     });
-
-    useEffect(() => {
-        if (user) navigate("/wallet");
-    }, [user])
 
     const switchMode = () => {
         setUserData({

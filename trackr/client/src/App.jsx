@@ -1,39 +1,36 @@
 import {
     createBrowserRouter,
     RouterProvider,
+    Navigate,
 } from "react-router-dom";
 
 import Accounts from "./pages/Wallet/Accounts/Accounts.jsx";
+import AccountForm from "./pages/Wallet/Accounts/AccountForm/AccountForm.jsx";
 import Analytics from "./pages/Wallet/Analytics/Analytics.jsx";
 import Dashboard from "./pages/Wallet/Dashboard/Dashboard.jsx";
-import Landing, {
-    // landingLoader 
-} from "./pages/Landing/Landing.jsx";
-import EmailAuth, {
-    // emailAuthLoader 
-} from "./pages/Auth/EmailAuth.jsx";
+import Landing from "./pages/Landing/Landing.jsx";
+import EmailAuth from "./pages/Auth/EmailAuth.jsx";
 import Records from "./pages/Wallet/Records/Records.jsx";
 import Settings from "./pages/Wallet/Settings/Settings.jsx";
-import Wallet, {
-    // walletLoader 
-} from "./pages/Wallet/Wallet.jsx";
+import Wallet from "./pages/Wallet/Wallet.jsx";
 
-import { UserContextProvider } from "./contexts/UserContext.jsx";
-import { WalletContextProvider } from "./contexts/WalletContext.jsx";
+import { getUserContext } from "./contexts/UserContext.jsx";
 
 const App = () => {
+    const { user } = getUserContext();
+
     const router = createBrowserRouter([
         {
             path: "/",
-            element: <Landing></Landing>,
+            element: !user ? <Landing></Landing> : <Navigate to="/wallet"></Navigate>,
         },
         {
             path: "/auth",
-            element: <EmailAuth></EmailAuth>,
+            element: !user ? <EmailAuth></EmailAuth> : <Navigate to="/wallet"></Navigate>,
         },
         {
             path: "/wallet",
-            element: <Wallet></Wallet>,
+            element: user ? <Wallet></Wallet> : <Navigate to="/auth"></Navigate>,
             children: [
                 {
                     index: true,
@@ -45,7 +42,11 @@ const App = () => {
                 },
                 {
                     path: "/wallet/accounts",
-                    element: <Accounts></Accounts>
+                    element: <Accounts></Accounts>,
+                },
+                {
+                    path: "/wallet/accounts/:accountId",
+                    element: <AccountForm></AccountForm>,
                 },
                 {
                     path: "/wallet/analytics",
@@ -64,11 +65,7 @@ const App = () => {
     ])
 
     return (
-        <UserContextProvider>
-            <WalletContextProvider>
-                <RouterProvider router={router}></RouterProvider>
-            </WalletContextProvider>
-        </UserContextProvider>
+        <RouterProvider router={router}></RouterProvider>
     )
 }
 

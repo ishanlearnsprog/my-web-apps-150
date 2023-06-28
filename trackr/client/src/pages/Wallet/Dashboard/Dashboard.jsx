@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 import { getWalletContext } from "../../../contexts/WalletContext.jsx";
 import AccountCard from "../../../components/Dashboard/AccountCard.jsx"
 import RecordsCard from "../../../components/Dashboard/RecordsCard/RecordCard.jsx"
 
 const Dashboard = () => {
+    const navigate = useNavigate();
     const { accounts, balances } = getWalletContext();
 
     let totalBalance = 0;
@@ -26,7 +29,7 @@ const Dashboard = () => {
                         </div>
                     </div> */}
                     {dashboardAccounts}
-                    <button className="add-account-card">Add Account</button>
+                    <button className="add-account-card" onClick={() => navigate("/wallet/accounts/0")}>Add Account</button>
                 </div>
             </section>
             <section className="dashboard-cards-container">

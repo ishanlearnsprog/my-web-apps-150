@@ -1,10 +1,11 @@
 import { useState } from "react";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { getUserContext } from "../../../contexts/UserContext.jsx";
 
 const Header = () => {
+    const navigate = useNavigate();
     const { userDispatch } = getUserContext();
     const [menuState, setMenuState] = useState(false);
 

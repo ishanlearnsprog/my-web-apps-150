@@ -39,8 +39,9 @@ const Wallet = () => {
     }
 
     useEffect(() => {
-        if (!user) return navigate("/auth");
-        fetchData();
+        if (user) {
+            fetchData();
+        }
     }, [user])
 
     return (
