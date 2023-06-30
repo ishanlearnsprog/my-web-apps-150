@@ -22,15 +22,21 @@ const App = () => {
     const router = createBrowserRouter([
         {
             path: "/",
-            element: !user ? <Landing></Landing> : <Navigate to="/wallet"></Navigate>,
+            element: <Landing></Landing>,
         },
         {
             path: "/auth",
-            element: !user ? <EmailAuth></EmailAuth> : <Navigate to="/wallet"></Navigate>,
+            element: <EmailAuth></EmailAuth>,
         },
         {
             path: "/wallet",
-            element: user ? <Wallet></Wallet> : <Navigate to="/auth"></Navigate>,
+            element: () => {
+                if (user) {
+                    return <Wallet></Wallet>
+                } else {
+                    return <Navigate to="/auth"></Navigate>
+                }
+            },
             children: [
                 {
                     index: true,
