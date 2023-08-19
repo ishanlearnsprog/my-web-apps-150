@@ -2,8 +2,8 @@
 
 :root {
     --font-color-main: hsl(0, 0%, 0%);
-    /* --font-color-hover: hsl(0, 55%, 99%); */
     --font-color-hover: hsl(0, 0%, 100%);
+    --color-background: hsl(0, 100%, 55%);
 }
 
 * {
@@ -25,7 +25,7 @@ button {
 }
 
 body {
-    background-color: hsl(0, 100%, 55%);
+    background-color: var(--color-background);
     width: 100%;
     min-height: 100vh;
 }
@@ -86,13 +86,13 @@ main {
 }
 
 .countdown-clock {
-    margin: 0 0 1rem;
+    margin: 0 0.5rem 1rem;
     display: flex;
     justify-content: space-between;
+    color: var(--font-color-hover);
 }
 
 .countdown-clock-dials {
-    color: var(--font-color-hover);
     display: flex;
     flex-direction: column;
 }
@@ -138,8 +138,8 @@ main {
         font-size: 3.5rem;
     }
 
-    .countdown-clock-dials {
-        margin: 1rem 0;
+    .countdown-clock {
+        margin: 0 1rem 1rem;
     }
 
     .countdown-clock-dials .dial-value {
