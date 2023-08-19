@@ -2,7 +2,7 @@ export const Introduction = () => {
     return (
         <>
             <div>
-                <h1>Hi. I am Ishan.</h1>
+                <h1>Hi. I am <span className="name-highlight">Ishan</span>.</h1>
                 <h2>I build cool websites.</h2>
                 <div className="container-introduction-links">
                     <span>

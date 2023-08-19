@@ -1,15 +1,12 @@
 import { useState, useRef } from "react";
 
 export const CountDown = () => {
-    // countdown variables
     const [countDown, setCountDown] = useState({
         days: 0,
         hours: 0,
         minutes: 0,
         seconds: 0
     });
-
-    // countdown
     const countDownTitle = "Web Dev Countdown";
     const countDownDate = new Date(2023, 10, 28);
 
