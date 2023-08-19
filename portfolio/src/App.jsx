@@ -5,10 +5,10 @@ export const App = () => {
     return (
         <>
             <main>
-                <section className="introduction-container">
+                <section className="container container-introduction">
                     <Introduction></Introduction>
                 </section>
-                <section className="count-down-container">
+                <section className="container container-countdown">
                     <CountDown></CountDown>
                 </section>
             </main>

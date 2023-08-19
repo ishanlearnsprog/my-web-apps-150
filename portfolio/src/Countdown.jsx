@@ -42,20 +42,20 @@ export const CountDown = () => {
                 <h1>{countDownTitle}</h1>
                 <div>
                     <div>
-                        <span>D</span>
                         <span>{countDown.days}</span>
+                        <span>DAYS</span>
                     </div>
                     <div>
-                        <span>H</span>
                         <span>{countDown.hours}</span>
+                        <span>HOURS</span>
                     </div>
                     <div>
-                        <span>M</span>
                         <span>{countDown.minutes}</span>
+                        <span>MINUTES</span>
                     </div>
                     <div>
-                        <span>S</span>
                         <span>{countDown.seconds}</span>
+                        <span>SECONDS</span>
                     </div>
                 </div>
                 <div>
