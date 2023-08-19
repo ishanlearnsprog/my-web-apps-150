@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export const CountDown = () => {
+    // countdown variables
     const [countDown, setCountDown] = useState({
         days: 0,
         hours: 0,
         minutes: 0,
         seconds: 0
     });
-    const [showPost, setShowPost] = useState(false);
 
+    // countdown
     const countDownTitle = "Web Dev Countdown";
     const countDownDate = new Date(2023, 10, 28);
 
@@ -32,37 +33,33 @@ export const CountDown = () => {
         }
     }, 1000);
 
-    const styles = {
-        display: showPost ? "block" : "none"
-    }
-
     return (
         <>
-            <div>
-                <h1>{countDownTitle}</h1>
-                <div>
-                    <div>
-                        <span>{countDown.days}</span>
-                        <span>DAYS</span>
+            <div className="countdown">
+                <h2>{countDownTitle}</h2>
+                <div className="countdown-clock">
+                    <div className="countdown-clock-dials">
+                        <span className="dial-value">{countDown.days}</span>
+                        <span className="dial-title">DAYS</span>
                     </div>
-                    <div>
-                        <span>{countDown.hours}</span>
-                        <span>HOURS</span>
+                    <div className="countdown-clock-dials">
+                        <span className="dial-value">{countDown.hours}</span>
+                        <span className="dial-title">HOURS</span>
                     </div>
-                    <div>
-                        <span>{countDown.minutes}</span>
-                        <span>MINUTES</span>
+                    <div className="countdown-clock-dials">
+                        <span className="dial-value">{countDown.minutes}</span>
+                        <span className="dial-title">MINUTES</span>
                     </div>
-                    <div>
-                        <span>{countDown.seconds}</span>
-                        <span>SECONDS</span>
+                    <div className="countdown-clock-dials">
+                        <span className="dial-value">{countDown.seconds}</span>
+                        <span className="dial-title">SECONDS</span>
                     </div>
                 </div>
-                <div>
-                    <button onClick={() => setShowPost(!showPost)}>What's this countdown about?</button>
-                    <iframe style={styles} src="https://www.linkedin.com/embed/feed/update/urn:li:share:7062747909976440833" height="804" width="504" allowFullScreen={false} title="WEB DEV COUNTDOWN POST"></iframe>
-                </div>
+                <a href="https://www.linkedin.com/posts/ishanlearnsprog_webdevelopment-html5-css-activity-7062747912690167809-SlMe/?utm_source=share&utm_medium=member_desktop" target="_blank" rel="noopener noreferrer">
+                    What's this countdown about?
+                </a>
             </div>
         </>
     )
 }
+
