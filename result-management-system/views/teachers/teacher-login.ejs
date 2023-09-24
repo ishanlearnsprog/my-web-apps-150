@@ -11,7 +11,18 @@
 
 <body>
     <main>
-        <h1>At Teacher Login</h1>
+        <h1>Teacher Login</h1>
+        <form action="/teachers" method="post">
+            <div>
+                <label for="teacherId">Teacher ID:</label>
+                <input type="number" id="teacherId" name="teacherId">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <button type="submit">Login</button>
+        </form>
     </main>
 </body>
 

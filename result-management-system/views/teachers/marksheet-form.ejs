@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%=title%>
+    </title>
+</head>
+
+<body>
+    <h1>Add Student Marksheet</h1>
+    <form action="/teachers/marksheet" method="post">
+        <div>
+            <label for="studentId">Student Id</label>
+            <input type="text" id="studentId" name="studentId">
+        </div>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div>
+            <label for=birthDate">Birth Date</label>
+            <input type="date" name="birthDate" id="birthDate" placeholder="dd/mm/yyyy">
+        </div>
+        <div>
+            <label for="computerMarks">Computer Marks</label>
+            <input type="number" id="computerMarks" name="computerMarks" max="100" min="0">
+        </div>
+        <div>
+            <label for="mathMarks">Math Marks</label>
+            <input type="number" id="mathMarks" name="mathMarks" max="100" min="0">
+        </div>
+        <button type="submit">Add Student Marksheet</button>
+    </form>
+    <a href=<%=`/teachers` %>>Go to Dashboard</a>
+</body>
+
+</html>

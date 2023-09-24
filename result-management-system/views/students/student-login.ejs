@@ -10,9 +10,18 @@
 </head>
 
 <body>
-    <main>
-        <h1>At Student Login</h1>
-    </main>
+    <h1>Student Login</h1>
+    <form action="/students" method="post">
+        <div>
+            <label for="sl-studentId">Student Id</label>
+            <input type="text" name="studentId" id="sl-studentId">
+        </div>
+        <div>
+            <label for="sl-birthDate">Birth Date</label>
+            <input type="date" name="birthDate" id="sl-birthDate">
+        </div>
+        <button type="submit">Veiw Marksheet</button>
+    </form>
 </body>
 
 </html>

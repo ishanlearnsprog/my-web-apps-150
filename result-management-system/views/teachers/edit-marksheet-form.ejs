@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%=title%>
+    </title>
+</head>
+
+<body>
+    <h1>Edit Marks</h1>
+    <form action=<%=`/teachers/marksheet/${student.studentId}/edit` %> method="post">
+        <div>
+            <label for="edit-studentId">Student Id</label>
+            <input type="text" id="edit-studentId" name="studentId" value=<%=student.studentId %> readonly>
+        </div>
+        <div>
+            <label for="edit-name">Name</label>
+            <input type="text" id="edit-name" name="name" value=<%=student.name %> readonly>
+        </div>
+        <div>
+            <label for="edit-computerMarks">Computer Marks</label>
+            <input type="number" id="editcomputerMarks" name="computerMarks" max="100" min="0"
+                value=<%=student.computerMarks %>>
+        </div>
+        <div>
+            <label for="edit-mathMarks">Math Marks</label>
+            <input type="number" id="edit-mathMarks" name="mathMarks" max="100" min="0" value=<%=student.mathMarks %>>
+        </div>
+        <button type="submit">Edit Student Marksheet</button>
+    </form>
+    <a href=<%=`/teachers/marksheet/${student.studentId}` %>>Go to Student</a>
+</body>
+
+</html>

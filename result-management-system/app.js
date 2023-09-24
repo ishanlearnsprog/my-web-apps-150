@@ -5,6 +5,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 
 import { teacherRoutes } from "./routes/teachers.js";
 import { studentRoutes } from "./routes/students.js"
@@ -15,6 +16,7 @@ app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(cookieParser(process.env.SECRET_KEY));
 
 app.set("view engine", "ejs");
 

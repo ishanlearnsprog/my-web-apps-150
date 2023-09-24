@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <h1>Teacher Dashboard</h1>
+    <form action="/teachers/logout" method="post">
+        <button type="submit">Logout</button>
+    </form>
+    <a href="/teachers/marksheet">Add Student Details</a>
+    <% for (i=0; i < students.length; i++) { %>
+        <div>
+            <p>
+                Student ID: <%= students[i].studentId %>
+            </p>
+            <p>
+                Student Name: <%= students[i].name %>
+            </p>
+            <a href=<%=`/teachers/marksheet/${students[i].studentId}` %> >View</a>
+        </div>
+        <% } %>
+</body>
+
+</html>
